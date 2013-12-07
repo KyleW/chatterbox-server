@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>chatterbox</title>
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- external javascript -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+
+<!--
+  <script src="client/bower_components/jquery/jquery.min.js"></script>
+  <script src="client/bower_components/underscore/underscore-min.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+  <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+-->
+
+  <!-- internal javascript -->
+  <script src="scripts/config.js"></script>
+  <script src="scripts/app.js"></script>
+
+  <title>Chat-Client</title>
+</head>
+<body>
+
+<div id="heading"><h1>Chatterbox</h1></div>
+
+<div id="left">
+</div>
+
+
+<div id="right">
+  <form>
+    <span class="subtitle">Add to the Chatter</span>
+    <textarea class="newMsg" name="userText" value=""></textarea>
+    <button class="submit" type="button">Chatter</button>
+  </form>
+
+  <div id="roomLabel">
+    <span class="subtitle">Current Room:</span><span class="currentRoom"></span></h3>
+  </div>
+  <div id="friendLabel">
+    <span class="subtitle">Befriended:</span>
+    <ul id="friendList"></ul>
+  </div>
+</div>
+
+
