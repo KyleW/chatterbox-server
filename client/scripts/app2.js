@@ -1,9 +1,74 @@
-$(document).ready(function(){ 
-  var messages = new Messages();
-  new MessagesView ({messages : messages});
+var App = Backbone.Model.extend({
+  initialize: function(){
+    this.set('messageList') = new (MessageList{model:Message});
+  },
+  defaults:{
+    userName:''; // grab this from the prompt
+    befriended:[];
+    currentroom: 'Lobby';
+    characterLimit: {
+      'objectId':d 4,
+      'roomname': 30,
+      'text':140,
+      'updatedAt': 24,
+      'username': 50
+    }
+  };
+
+  }
 });
 
+var AppView = Backbone.View.extend({
+  
+  template: _.template(""),
+  
+  initialize:function(){
+    this.render();
+  },
+  
+  render: function(){
+    return this.$el.html(this.template(this.model.attributes))
+  }
 
+});
+
+var Message = Backbone.Model.extend({
+  defaults:{
+      username:"",
+      roomname:"",
+      text:"",
+      createdAt:"",
+      updatedAt:"",
+      objectId:""
+  }
+
+
+});
+
+var MessageView = Backbone.View.extend({
+    template:_.template("<div class="message">
+      <div class="username"><%=username%></div>
+      <div class="roomname"><%=roomname%></div>
+      <div class="text"><%=text%></div>
+      <div class="createdAt"><%=createdAt%></div>
+    </div>"),
+
+  render: function(){
+    return this.$el.html(this.template(this.model.attributes)
+  }
+});
+
+var MessageList= Backbone.Collection.extend({});
+
+var MessageListView=Backbone.View.extend({});
+
+
+
+$(document).ready(function(){ 
+  $('body').html(new AppView({model: new App({})}));
+});
+
+///////////////////////////////////////
 var Messages = function (){};
 Messages.prototype.getMessages = function(options){
   console.log('getting messages');  
