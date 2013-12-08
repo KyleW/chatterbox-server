@@ -1,33 +1,48 @@
 var App = Backbone.Model.extend({
   initialize: function(){
-    this.set('messageList') = new (MessageList{model:Message});
+    this.set('messageList') = new (MessageList({model:Message}));
   },
   defaults:{
-    userName:''; // grab this from the prompt
-    befriended:[];
-    currentroom: 'Lobby';
+    userName:'', // grab this from the prompt
+    befriended:[],
+    currentroom: 'Lobby',
     characterLimit: {
-      'objectId':d 4,
+      'objectId': 4,
       'roomname': 30,
       'text':140,
       'updatedAt': 24,
       'username': 50
     }
-  };
-
   }
 });
 
 var AppView = Backbone.View.extend({
   
-  template: _.template(""),
-  
+  template: _.template("<div id='heading'><h1>Chatterbox</h1> \
+    </div><div id='left'></div> \
+      <div id='right'> \
+      <form> \
+        <span class='subtitle'>Add to the Chatter</span> \
+        <textarea class='newMsg' name='userText' value=''></textarea> \
+        <button class='submit' type='button'>Chatter</button> \
+      </form> \
+      <div id='roomLabel'> \
+        <span class='subtitle'>Current Room:</span><span class='currentRoom'></span></h3> \
+      </div> \
+      <div id='friendLabel'> \
+        <span class='subtitle'>Befriended:</span> \
+        <ul id='friendList'></ul> \
+      </div> \
+    </div>"),
+
   initialize:function(){
     this.render();
   },
   
   render: function(){
-    return this.$el.html(this.template(this.model.attributes))
+
+    this.$el.append(this.template(this.model.attributes))
+    return this.$el
   }
 
 });
@@ -46,15 +61,15 @@ var Message = Backbone.Model.extend({
 });
 
 var MessageView = Backbone.View.extend({
-    template:_.template("<div class="message">
-      <div class="username"><%=username%></div>
-      <div class="roomname"><%=roomname%></div>
-      <div class="text"><%=text%></div>
-      <div class="createdAt"><%=createdAt%></div>
+    template:_.template("<div class='message'>\
+      <div class='username'><%=username%></div>\
+      <div class='roomname'><%=roomname%></div>\
+      <div class='text'><%=text%></div>\
+      <div class='createdAt'><%=createdAt%></div>\
     </div>"),
 
   render: function(){
-    return this.$el.html(this.template(this.model.attributes)
+    return this.$el.html(this.template(this.model.attributes));
   }
 });
 
