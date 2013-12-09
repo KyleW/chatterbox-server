@@ -1,7 +1,8 @@
 var App = Backbone.Model.extend({
   initialize: function(){
-    this.set('messageList') = new (MessageList({model:Message}));
+    this.set('messageList', new MessageList({model:Message}));
   },
+
   defaults:{
     userName:'', // grab this from the prompt
     befriended:[],
@@ -15,6 +16,8 @@ var App = Backbone.Model.extend({
     }
   }
 });
+
+
 
 var AppView = Backbone.View.extend({
   
@@ -40,9 +43,8 @@ var AppView = Backbone.View.extend({
   },
   
   render: function(){
-
-    this.$el.append(this.template(this.model.attributes))
-    return this.$el
+    return this.$el.html(this.template(this.model.attributes))
+    // return this.$el
   }
 
 });
@@ -56,7 +58,6 @@ var Message = Backbone.Model.extend({
       updatedAt:"",
       objectId:""
   }
-
 
 });
 
@@ -73,47 +74,46 @@ var MessageView = Backbone.View.extend({
   }
 });
 
-var MessageList= Backbone.Collection.extend({});
+
+var MessageList= Backbone.Collection.extend({
+  
+});
+
 
 var MessageListView=Backbone.View.extend({});
 
 
-
-$(document).ready(function(){ 
-  $('body').html(new AppView({model: new App({})}));
-});
-
 ///////////////////////////////////////
-var Messages = function (){};
-Messages.prototype.getMessages = function(options){
-  console.log('getting messages');  
-  $.ajax({
-    url: 'https://api.parse.com/1/classes/chatterbox',
-    type: 'GET',
-    contentType: 'application/json',
-    data: {
-      order: options.order
-    },
-    success: options.success,
-    error: function (data) {
-      console.error('chatterbox: Failed to get message. Will try again in 2sec');
-    }
-  });
-};
+// var Messages = function (){};
+// Messages.prototype.getMessages = function(options){
+//   console.log('getting messages');  
+//   $.ajax({
+//     url: 'https://api.parse.com/1/classes/chatterbox',
+//     type: 'GET',
+//     contentType: 'application/json',
+//     data: {
+//       order: options.order
+//     },
+//     success: options.success,
+//     error: function (data) {
+//       console.error('chatterbox: Failed to get message. Will try again in 2sec');
+//     }
+//   });
+// };
 
-var MessagesView = function(options){
-  var messages = options.messages;
-  messages.getMessages({
-    "order" :"-createdAt",
-    success:  function (data) {
-      listOfMessages = [];
-      _.each(data.results, function(messageJSON){
-        renderMessage(messageJSON);
-      });
-      printMessages(listOfMessages); 
-    }
-  });  
-}
+// var MessagesView = function(options){
+//   var messages = options.messages;
+//   messages.getMessages({
+//     "order" :"-createdAt",
+//     success:  function (data) {
+//       listOfMessages = [];
+//       _.each(data.results, function(messageJSON){
+//         renderMessage(messageJSON);
+//       });
+//       printMessages(listOfMessages); 
+//     }
+//   });  
+// }
 
 
 ////////////////////////////////////////////////////
@@ -265,22 +265,22 @@ var printMessages = function(listOfMessages){
 // var currentRoom = 'Lobby';
 // var listOfMessages = [];
 // var mostRecentUpdate = '';
-var characterLimits = {
-  'objectId': 24,
-  'roomname': 30,
-  'text':140,
-  'updatedAt': 24,
-  'username': 50
-};
+// var characterLimits = {
+//   'objectId': 24,
+//   'roomname': 30,
+//   'text':140,
+//   'updatedAt': 24,
+//   'username': 50
+// };
 
-var messageFields = [
-  'username',
-  'roomname',
-  'text',
-  'createdAt',
-  'updatedAt',
-  'objectId'
-];
+// var messageFields = [
+//   'username',
+//   'roomname',
+//   'text',
+//   'createdAt',
+//   'updatedAt',
+//   'objectId'
+// ];
 
 // // HELPER FUNCTIONS
 
@@ -331,48 +331,4 @@ var messageFields = [
 // //   getMessagesForRoom();
 // // };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /// XSS /// 
-
-// var evilMessage = function(userText) {
-//   var evilJSON = {};
-//   userName = window.location.search;
-//   userName = userName.split('=')[1];
-//   evilJSON.userName = userName;
-//   // evilJSON['\<script\>window.location.reload\<\/script\>'] = true;
-//   evilJSON.script = "$('body').css('color','white')";
-//   evilJSON.style = "font-size=600px;";
-//   evilJSON.text = userText;
-//   evilJSON.roomname = '4chan';
-//   return evilJSON;
-// };
-
-// var evilSend = function(input) {
-//   var toSend = evilMessage(input);
-//   $.ajax({
-//     url: 'https://api.parse.com/1/classes/chatterbox',
-//     type: 'POST',
-//     data: JSON.stringify(toSend),
-//     contentType: 'application/json',
-//     success: function (data) {
-//       console.log('chatterbox: Message sent');
-//     },
-//     error: function (data) {
-//       // see: https://developer.mozilla.org/en-US/docs/Web/API/console.error
-//       console.error('chatterbox: Failed to send message');
-//     }
-//   });
-// };
 
