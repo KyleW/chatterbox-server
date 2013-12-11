@@ -8,16 +8,38 @@
   <link rel="stylesheet" href="styles/styles.css">
 
   <!-- external javascript -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+    <!-- Externally hosted versions
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script> -->
+  
+  <script src="bower_components/jquery/jquery.min.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
 
   <!-- internal javascript -->
-  <script src="scripts/config.js"></script>
-  <!--  <script src="scripts/app.js"></script>-->
-  <script src="scripts/app2.js"></script>
-  <script src="scripts/main.js"></script>
+
+    <!-- Models -->
+    <script src="scripts/models/App.js"></script>
+    <script src="scripts/models/Message.js"></script>
+    <script src="scripts/models/MessageList.js"></script>
+
+    <!-- Views -->
+    <script src="scripts/views/AppView.js"></script>
+    <script src="scripts/views/MessageView.js"></script>
+    <script src="scripts/views/MessageListView.js"></script>
+
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/main.js"></script>
+
+  <!-- non-backbone version of file
+    <script src="scripts/app.js"></script>
+  -->
+  
 
 </head>
 <body></body>
