@@ -1,6 +1,6 @@
 var App = Backbone.Model.extend({
   initialize: function(){
-    this.set('messageList', new MessageList({model:Message}));
+    this.set('messageList', new MessageList());
   },
 
   defaults:{

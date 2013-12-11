@@ -84,7 +84,7 @@ var getMessages = function(){
       printMessages(listOfMessages);
     },
     error: function (a,b,c) {
-      console.log(a,b,c);
+      // console.log(a,b,c);
       // see: https://developer.mozilla.org/en-US/docs/Web/API/console.error
       console.error('chatterbox: Failed to get message. Will try again in 2sec');
     }

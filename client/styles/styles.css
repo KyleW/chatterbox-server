@@ -37,6 +37,13 @@ body {
   clear:both;
 }
 
+.messageList {
+  float:left;
+  margin-top: 40px;
+  margin-left:2%;
+  width:47%;
+}
+
 #left {
   float:left;
   margin-top: 40px;

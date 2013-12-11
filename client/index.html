@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,30 +15,28 @@
   
   <script src="bower_components/jquery/jquery.min.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+  <script src="scripts/config.js"></script>
+
+<!-- WITHOUT BACKBONE -->
+<!--  
+  <script src="scripts/app.js"></script>
+-->
+
+<!-- WITH BACKBONE -->    
   <script src="bower_components/backbone/backbone.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+  <!-- Models -->
+  <script src="scripts/models/App.js"></script>
+  <script src="scripts/models/Message.js"></script>
+  <script src="scripts/models/MessageList.js"></script>
 
-  <!-- internal javascript -->
+  <!-- Views -->
+  <script src="scripts/views/AppView.js"></script>
+  <script src="scripts/views/MessageView.js"></script>
+  <script src="scripts/views/MessageListView.js"></script>
+  <script src="scripts/main.js"></script>
 
-    <!-- Models -->
-    <script src="scripts/models/App.js"></script>
-    <script src="scripts/models/Message.js"></script>
-    <script src="scripts/models/MessageList.js"></script>
-
-    <!-- Views -->
-    <script src="scripts/views/AppView.js"></script>
-    <script src="scripts/views/MessageView.js"></script>
-    <script src="scripts/views/MessageListView.js"></script>
-
-
-    <script src="scripts/config.js"></script>
-    <script src="scripts/main.js"></script>
-
-  <!-- non-backbone version of file
-    <script src="scripts/app.js"></script>
-  -->
-  
 
 </head>
 <body></body>
